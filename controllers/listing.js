@@ -30,9 +30,9 @@ module.exports.showListing = async (req, res, next) => {
     return res.redirect("/listings");
   }
 
-  console.log("Listing Found:", listing);
   res.render("listings/show.ejs", { listing, mapToken: process.env.MAP_TOKEN });
 };
+
 
 
 
