@@ -16,6 +16,7 @@ const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
+const helmet = require("helmet");
 const User = require("./models/user.js");
 
 const listingRouter = require("./routes/listing.js");
@@ -74,6 +75,16 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(session(sessionOptions));
 app.use(flash());
+
+app.use(helmet());
+
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; img-src 'self' https://res.cloudinary.com data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;"
+  );
+  next();
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
