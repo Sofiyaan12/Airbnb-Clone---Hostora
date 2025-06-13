@@ -20,14 +20,20 @@ module.exports.showListing = async (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return next(new ExpressError("Page Not Found", 404));
   }
-  const listing = await Listing.findById(id).populate({ path: "reviews", populate: {path: "author"}}).populate("owner");
+
+  const listing = await Listing.findById(id)
+    .populate({ path: "reviews", populate: { path: "author" } })
+    .populate("owner");
+
   if (!listing) {
-      req.flash("error", "Listing not found.");
-      return res.redirect("/listings");
+    req.flash("error", "Listing not found.");
+    return res.redirect("/listings");
   }
+
   console.log("Listing Found:", listing);
-  res.render("listings/show.ejs", { listing });
+  res.render("listings/show.ejs", { listing, mapToken: process.env.MAP_TOKEN });
 };
+
 
 
 module.exports.createListing = async (req, res, next) => {
