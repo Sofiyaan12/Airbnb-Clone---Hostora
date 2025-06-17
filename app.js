@@ -73,16 +73,18 @@ app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
     `
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://api.mapbox.com https://kit.fontawesome.com;
-      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://api.mapbox.com;
-      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;
-      img-src 'self' blob: data: https://res.cloudinary.com https://images.unsplash.com https://*.tiles.mapbox.com;
-      connect-src 'self' https://api.mapbox.com https://events.mapbox.com https://*.tiles.mapbox.com;
-      worker-src 'self' blob:;
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://api.mapbox.com https://kit.fontawesome.com;
+    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://api.mapbox.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' blob: data: https://res.cloudinary.com https://images.unsplash.com;
+    connect-src 'self' https://api.mapbox.com https://events.mapbox.com;
+    worker-src 'self' blob:;
     `.replace(/\s{2,}/g, " ").trim()
   );
+  next();
 });
+
 
 app.use(passport.initialize());
 app.use(passport.session());
