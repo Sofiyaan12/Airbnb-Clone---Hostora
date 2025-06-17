@@ -79,19 +79,21 @@ app.use(flash());
 app.use(helmet());
 
 app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    `
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://api.mapbox.com;
-      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://api.mapbox.com;
-      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
-      img-src 'self' blob: data: https://res.cloudinary.com https://images.unsplash.com;
-      connect-src 'self' https://api.mapbox.com https://events.mapbox.com;
-    `.replace(/\s{2,}/g, ' ').trim()
-  );
+  const csp = `
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://api.mapbox.com;
+    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://api.mapbox.com;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    img-src 'self' blob: data: https://res.cloudinary.com https://images.unsplash.com;
+    connect-src 'self' https://api.mapbox.com https://events.mapbox.com;
+    worker-src 'self' blob:;
+  `.replace(/\s{2,}/g, ' ').trim();
+  
+  res.setHeader("Content-Security-Policy", csp);
   next();
 });
+
+
 
 
 app.use(passport.initialize());
