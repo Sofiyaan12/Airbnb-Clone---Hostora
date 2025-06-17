@@ -82,7 +82,7 @@ app.use((req, res, next) => {
       worker-src 'self' blob:;
     `.replace(/\s{2,}/g, " ").trim()
   );
-}  
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
