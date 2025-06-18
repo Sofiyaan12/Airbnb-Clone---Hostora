@@ -1,135 +1,165 @@
+/* GLOBAL LAYOUT */
 body {
     font-family: "Plus Jakarta Sans", sans-serif !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-.container {
+  }
+  
+  .container {
     flex: 1;
-}
-
-
-/* navbar */
-
-.navbar {
+    padding: 1rem;
+  }
+  
+  /* NAVBAR */
+  .navbar {
     height: 5rem;
     background-color: white;
-}
-
-.fa-compass {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .fa-compass {
     color: #fe424d;
     font-size: 2rem;
-}
-
-.nav-link {
+  }
+  
+  .nav-link {
     color: #222222 !important;
-}
-
-/* footer */
-
-.f-info-links a {
-    text-decoration: none;
-    color: #222222;
-}
-
-.f-info-links a:hover {
-    text-decoration: underline;
-
-}
-
-.f-info-links,
-.f-info-socials,
-.f-info-brand {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.f-info-socials i {
-    font-size: 1.2rem;
-    margin-right: 1rem;
-}
-
-.f-info {
+  }
+  
+  /* FOOTER */
+  .f-info {
     text-align: center;
-    height: 8rem;
     background-color: #ebebeb;
+    padding: 2rem 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: space-evenly;
-}
-
-/* Cards */
-
-.listing-card {
+    gap: 0.75rem;
+  }
+  
+  .f-info-links,
+  .f-info-socials,
+  .f-info-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+  }
+  
+  .f-info-links a,
+  footer a {
+    text-decoration: none;
+    color: #222222;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  footer a:hover,
+  .f-info-links a:hover {
+    color: #fe424d;
+    text-decoration: underline;
+  }
+  
+  .f-info-socials i {
+    font-size: 1.2rem;
+  }
+  
+  /* LISTING CARD */
+  .listing-card {
     border: none !important;
     margin-bottom: 2rem;
-}
-
-.card-img-top {
-    border-radius: 1 rem !important;
+  }
+  
+  .card-img-top {
+    border-radius: 1rem !important;
     width: 100% !important;
+    height: 200px;
     object-fit: cover !important;
-}
-
-.card-body {
-    padding: 0 !important;
-}
-
-.card-text p {
+  }
+  
+  .card-body {
+    padding: 0.75rem !important;
+  }
+  
+  .card-text p {
     font-weight: 400 !important;
-}
-
-/* Card Effect  */
-
-.card-img-overlay {
+  }
+  
+  .card-img-overlay {
     opacity: 0;
-}
-
-.card-img-overlay:hover {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .card-img-overlay:hover {
     opacity: 0.2;
     background-color: white;
-}
-
-/* New Page */
-
-.add-btn {
+  }
+  
+  /* NEW & EDIT FORM BUTTONS */
+  .add-btn,
+  .edit-btn {
     background-color: #fe424d !important;
     color: white !important;
     border: none !important;
-}
-
-/* Edit Page */
-
-.edit-btn {
-    background-color: #fe424d !important;
-    color: white !important;
-    border: none !important;
-}
-
-/* Show Page */
-
-.show-img {
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .add-btn:hover,
+  .edit-btn:hover {
+    background-color: #d73740 !important;
+  }
+  
+  /* SHOW PAGE IMAGE */
+  .show-img {
+    width: 100%;
     height: 30vh;
+    object-fit: cover;
     border-radius: 1rem !important;
-}
-
-.btns {
+  }
+  
+  /* MAP */
+  #map {
+    height: 400px;
+    width: 100%;
+    border-radius: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* BUTTON CONTAINER */
+  .btns {
     display: flex;
-}
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
 
-.show-btn {
-    padding-left: 0%;
-    padding-right: 0%;
-}
-p
-/* Map */
+  /* Fix dropdown menu alignment on small screens */
+@media (max-width: 768px) {
 
-#map {
-  height: 400px;
-  width: 80vh;
-}
+    .dropdown-menu {
+        transition: all 0.3s ease-in-out;
+      }
+      
+    .dropdown-menu {
+      width: 90vw;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  
+    .navbar-nav .nav-item {
+      width: 100%;
+    }
+  
+    .dropdown-menu.show {
+      position: absolute !important;
+      top: 60px !important; /* or tweak based on your navbar height */
+      z-index: 1000;
+      border-radius: 0.75rem;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    }
+  }
+  

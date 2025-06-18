@@ -16,13 +16,19 @@
                     <input name="email" id="username" type="email" class="form-control" required/>
                   </div>
 
-                  <div class="mb-3">
+                  <div class="mb-3 position-relative">
                     <label for="password" class="form-label">Password</label>
-                    <input name="password" id="password" type="password" class="form-control" required/>
+                    <div class="input-group">
+                      <input name="password" id="signupPassword" type="password" class="form-control" required />
+                      <span class="input-group-text" onclick="togglePassword('signupPassword', 'signupEyeIcon')" style="cursor: pointer;">
+                        <i id="signupEyeIcon" class="bi bi-eye-slash"></i>
+                      </span>
+                    </div>
                   </div>
+                  
 
                 <button class="btn btn-success">
-                    SignUpe
+                    SignUp
                 </button>
 
             </form>
