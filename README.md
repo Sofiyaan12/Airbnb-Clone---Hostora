@@ -6,7 +6,7 @@ A full-stack Airbnb-style rental listing application where users can:
 - Leave reviews and ratings
 - Sign up, log in, and maintain session-based authentication
 
-Live Demo: _[Link to Render Deployment]_
+Live Demo: https://hostora.onrender.com
 
 ---
 
